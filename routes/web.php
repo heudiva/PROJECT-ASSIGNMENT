@@ -8,8 +8,12 @@ use App\Http\Controllers\Setting\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\StudentController;
 
-Route::get('/', function () {
+Route::get('/s', function () {
     return view('welcome');
+})->name('home');
+
+Route::get('/', function () {
+    return view('test');
 })->name('home');
 
 Route::get('/dashboard', function () {

@@ -15,7 +15,7 @@
     }
 </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-800">
+<body class="bg-gray-50 ">
     @include('website.components.navbar')
   <!-- Navbar -->
   <nav class="bg-blue-900 text-white">
