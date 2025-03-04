@@ -7,5 +7,5 @@
     @include('components/sidebar')
 @endsection
 @section('layoutContent')
-    {{-- @include('components/main') --}}
+    @include('components/main')
 @endsection
