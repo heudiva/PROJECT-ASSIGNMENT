@@ -29,40 +29,6 @@ route::get('/dashboard/home',[HomeController::class,'main'])->name('admin.dashbo
 
 route::get('/dashboard/setting',[SettingController::class,'index'])->name('admin.dashboard.setting');
 
-route::get('/admin/blog/menu',[BlogController::class,'menu'])->name('admin.blog.menu');
-Route::get('/admin/blog/menu/create', [BlogController::class, 'create'])->name('admin.blog.menu.create');
-
-Route::prefix('/admin')->name('admin.blog.menu.')->group(function () {
-    route::controller(BlogController::class)->group(function(){
-        route::post('/blog/menu/store', 'store')->name('store');
-        route::get('/blog/menu/{id}', 'edit')->name('edit');
-        route::put('/blog/menu/{id}', 'update')->name('update');
-        route::get('admin/blog/menu/{id}', 'destroy')->name('destroy');
-    });
-});
-
-
-
-
-route::get('/wk-blog',[BlogController::class,'index'])->name('blog');
-route::get('/admin/blog/article',[BlogController::class,'article'])->name('admin.blog.article');
-Route::get('/admin/blog/article/create', [BlogController::class, 'article_create'])->name('admin.blog.article.create');
-
-Route::prefix('/admin')->name('admin.blog.article.')->group(function () {
-    route::controller(BlogController::class)->group(function(){
-        route::post('/blog/article/store', 'store_article')->name('store');
-        route::get('/blog/article/{id}', 'edit_article')->name('edit');
-        route::put('/blog/article/{id}', 'update_article')->name('update');
-        route::delete('admin/article/blog/{id}', 'destroy_article');
-    });
-});
-
-
-
-
-
-
-
 
 Route::prefix('/student')->group(function () {
     route::controller(StudentController::class)->group(function(){

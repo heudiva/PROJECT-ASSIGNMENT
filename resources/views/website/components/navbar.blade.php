@@ -2,7 +2,7 @@
     <ul class="flex gap-4">
         <li><a class="text-white" href="">Project's services</a></li>
         <li><a class="text-white" href="{{ route('login') }}">Staff</a></li>
-        <li><a class="text-white" href="{{ route('blog') }}">Blog</a></li>
+        <li><a class="text-white" href="#">Blog</a></li>
         <li><a class="text-white" wire:navigate href="#">Mail</a></li>
         <li><a class="text-white" href="{{ route('student.login') }}">My Pro</a></li>
         <li><a class="text-white" href="">Calendar</a></li>
