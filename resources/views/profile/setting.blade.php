@@ -39,19 +39,28 @@
         @include('profile.partials.social-accounts')
 
         {{-- Other accounts --}}
-        @include('profile.partials.other-accounts')
+        {{-- @include('profile.partials.other-accounts') --}}
         
     </div>
-    {{-- General information --}}
-    @include('profile.partials.general-info')
+    <div class="col-span-2">
+      {{-- General information --}}
+      @include('profile.partials.general-info')
+      
+      {{-- Password information --}}
+      @include('profile.partials.password-information')
+      
+      {{-- Sessions --}}
+      @include('profile.partials.sessions')
+
+  </div>
 
 </div>
 <div class="grid grid-cols-1 px-4 xl:grid-cols-2 xl:gap-4">
     {{-- Alerts & Notifications --}}
-    @include('profile.partials.alerts-notifi')
+    {{-- @include('profile.partials.alerts-notifi') --}}
 
     {{-- Email Notifications --}}
-    @include('profile.partials.email-notificat')
+    {{-- @include('profile.partials.email-notificat') --}}
     
 </div>
 @endsection
