@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-
+use App\Models\User;
 class ProfileController extends Controller
 {
     /**
@@ -42,6 +42,27 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public  function update_profile(Request $request) {
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+        ]);
+
+        dd($this->$request->image);
+
+        $users = new User();
+
+        $extension = $request->file('image')->extension();
+        $fileName = date('YmdHis').'wkst.'.$extension;
+        $request->file('image')->move(public_path('uploads/students'), $fileName);
+
+        $users->avatar = $fileName;
+
+        $users->save();
+
+        return Redirect::route('profile.edit')->with('status', 'profile-picture successfuly');
     }
 
     /**

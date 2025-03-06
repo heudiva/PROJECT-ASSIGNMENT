@@ -4,7 +4,7 @@
         <li><a class="text-white" href="{{ route('login') }}">Staff</a></li>
         <li><a class="text-white" href="#">Blog</a></li>
         <li><a class="text-white" wire:navigate href="#">Mail</a></li>
-        <li><a class="text-white" href="{{ route('student.login') }}">My Pro</a></li>
+        <li><a class="text-white" href="#">My Pro</a></li>
         <li><a class="text-white" href="">Calendar</a></li>
     </ul>
     <button id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">

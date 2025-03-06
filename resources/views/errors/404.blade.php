@@ -30,7 +30,7 @@
 
 <div class="flex flex-col justify-center items-center px-6 mx-auto h-screen xl:px-0 dark:bg-gray-900">
     <div class="block md:max-w-lg">
-        <img src="#" alt="astronaut image">
+        <img src="{{ asset('illustrations/404.svg') }}" alt="astronaut image">
     </div>
     <div class="text-center xl:max-w-4xl">
         <h1 class="mb-3 text-2xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">Page not found</h1>
