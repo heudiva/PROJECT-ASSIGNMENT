@@ -37,4 +37,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::get('/gategory', [CategoryController::class, 'index'])->name('category');
+
+
 require __DIR__.'/auth.php';
