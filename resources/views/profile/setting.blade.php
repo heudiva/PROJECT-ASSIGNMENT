@@ -15,6 +15,9 @@
         {{-- Language & Time --}}
         @include('profile.partials.language-time')
 
+        {{-- Delete Account --}}
+        @include('profile.partials.delete-user')
+
         {{-- Other accounts --}}
         {{-- @include('profile.partials.other-accounts') --}}
         
