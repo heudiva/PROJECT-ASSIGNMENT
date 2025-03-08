@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Categorys\CategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Setting\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\StudentController;
@@ -33,8 +33,17 @@ route::get('admin/dashboard',[HomeController::class,'index'])
 Route::middleware('auth')->group(function () {
     route::get('/dashboard/setting',[SettingController::class,'index'])->name('admin.dashboard.setting');
     
-    
 });
+
+Route::controller(ProductController::class)
+    ->group(function(){
+        Route::get('/product', 'index')
+            ->name('product.index');
+            
+        Route::post('/product', 'store')
+            ->name('product.store');
+
+    });
 
 
 Route::get('/gategory', [CategoryController::class, 'index'])->name('category');

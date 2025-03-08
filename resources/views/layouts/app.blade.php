@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     
-    @vite(['resources/css/app.css','resources/js/app.js','public/assets/js/sidebar.js'])
+    @vite(['resources/css/app.css','resources/js/app.js'])
 
     <script>
       if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

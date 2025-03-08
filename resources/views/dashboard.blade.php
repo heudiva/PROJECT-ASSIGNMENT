@@ -1072,6 +1072,7 @@
         </div>
       </div>
     </div>
+    {{-- Error --}}
     <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
       <!-- Card header -->
       <div class="items-center justify-between lg:flex">
@@ -1081,7 +1082,7 @@
         </div>
         <div class="items-center sm:flex">
           <div class="flex items-center">
-            <button id="dropdownDefault" data-dropdown-toggle="dropdown"
+            <button id="dropdownDefault" data-dropdown-toggle="dropdowns"
               class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button">
               Filter by status
@@ -1091,7 +1092,7 @@
               </svg>
             </button>
             <!-- Dropdown menu -->
-            <div id="dropdown" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+            <div id="dropdowns" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
               <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
                 Category
               </h6>
@@ -1460,4 +1461,4 @@
 
 </div>
 
-</x-layout>
+</x-app-layout>
