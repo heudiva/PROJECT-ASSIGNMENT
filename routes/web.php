@@ -45,6 +45,16 @@ Route::controller(ProductController::class)
 
     });
 
+Route::controller(CategoryController::class)
+    ->group(function(){
+        Route::get('/category', 'index')
+            ->name('category.index');
+            
+        Route::post('/category', 'store')
+            ->name('category.store');
+
+    });
+
 
 Route::get('/gategory', [CategoryController::class, 'index'])->name('category');
 

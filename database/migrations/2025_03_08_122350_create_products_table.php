@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('supplier_id')->nullable();
             $table->integer('qty_on_hand')->nullable();
             $table->integer('qty_alert')->nullable();
-            $table->string('note', length:100)->nullable();
+            $table->string('description', length:100)->nullable();
             $table->char('stocktype', length:50)->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
