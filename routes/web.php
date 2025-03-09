@@ -13,6 +13,9 @@ use App\Http\Controllers\Student\StudentController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+Route::get('/test', function () {
+    return view('test');
+})->name('test');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -46,17 +49,18 @@ Route::controller(ProductController::class)
     });
 
 Route::controller(CategoryController::class)
+    ->middleware('auth')
     ->group(function(){
         Route::get('/category', 'index')
             ->name('category.index');
             
         Route::post('/category', 'store')
             ->name('category.store');
+            
+        Route::get('/category/{category}', 'edit')
+            ->name('category.edit');
 
     });
-
-
-Route::get('/gategory', [CategoryController::class, 'index'])->name('category');
 
 
 require __DIR__.'/auth.php';
