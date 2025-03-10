@@ -49,8 +49,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        dd($category);
-        return compact('category');
+        return view('category.index',[
+            'categorys'=> Category::all()
+        ], compact('category'));
     }
 
     /**

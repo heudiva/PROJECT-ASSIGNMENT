@@ -10,6 +10,8 @@ use App\Http\Controllers\Setting\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\StudentController;
 
+use App\Http\Controllers\PostController;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -62,5 +64,21 @@ Route::controller(CategoryController::class)
 
     });
 
+
+
+    // post
+
+
+// Show all posts
+Route::get('/test', [PostController::class, 'index']);
+
+// Store a new post
+Route::post('/store', [PostController::class, 'store']);
+
+// Update a post
+Route::post('/update/{id}', [PostController::class, 'update']);
+
+// Delete a post
+Route::get('/delete/{id}', [PostController::class, 'destroy']);
 
 require __DIR__.'/auth.php';
