@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\SaveCategoryRequest;
+
+use function Laravel\Prompts\alert;
+
 class CategoryController extends Controller
 {
     /**
@@ -30,6 +33,7 @@ class CategoryController extends Controller
      */
     public function store(SaveCategoryRequest $request)
     {
+        // dd($request->input);
         $category = Category::create($request->validated());
 
         return redirect()->route('category.index', $category)
@@ -49,9 +53,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.index',[
-            'categorys'=> Category::all()
-        ], compact('category'));
+        alert("data");
+
     }
 
     /**

@@ -3,14 +3,11 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Categorys\CategoryController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Setting\SettingController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Student\StudentController;
 
-use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,34 +48,25 @@ Route::controller(ProductController::class)
     });
 
 Route::controller(CategoryController::class)
-    ->middleware('auth')
-    ->group(function(){
-        Route::get('/category', 'index')
-            ->name('category.index');
-            
-        Route::post('/category', 'store')
-            ->name('category.store');
-            
-        Route::get('/category/{category}', 'edit')
-            ->name('category.edit');
-
-    });
+->middleware('auth')
+->group(function () {
+    Route::get('category', 'index')->name('category.index');
+    // Route::post('/category', 'store')->name('category.store');
+    Route::post('category/store', 'store')->name('category.store'); // Added proper naming & structure
+    Route::post('category/edit', 'edit')->name('category.edit'); // Added proper naming & structure
+});
 
 
 
-    // post
 
 
-// Show all posts
-Route::get('/test', [PostController::class, 'index']);
 
-// Store a new post
-Route::post('/store', [PostController::class, 'store']);
 
-// Update a post
-Route::post('/update/{id}', [PostController::class, 'update']);
 
-// Delete a post
-Route::get('/delete/{id}', [PostController::class, 'destroy']);
+
+
+
+
+
 
 require __DIR__.'/auth.php';
