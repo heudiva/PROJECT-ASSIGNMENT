@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\SaveCategoryRequest;
+use Illuminate\Support\Facades\Redis;
 
 use function Laravel\Prompts\alert;
 
@@ -14,9 +15,10 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-        return view('category.index',[
-            'categorys'=> Category::all()
+    public function index()
+    {
+        return view('category.index', [
+            'categorys' => Category::all()
         ]);
     }
 
@@ -31,14 +33,25 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SaveCategoryRequest $request)
+    public function store(Request $request)
     {
-        // dd($request->input);
-        $category = Category::create($request->validated());
+        $category = new Category();
+        parse_str($request->input('data'), $formData);
+        $category->name=$formData['name'];
+        $category->name_khmer=$formData['name_khmer'];
+        $category->description=$formData['description'];
+        if(empty($formData['id']) || ($formData['id'] == ""))
+            $category->save();
+        else{
+            $category=Category::find($formData['id']);
+            $category->name=$formData['name'];
+            $category->name_khmer=$formData['name_khmer'];
+            $category->description=$formData['description'];
+        }
+        $category->update();
 
-        return redirect()->route('category.index', $category)
-        ->with('status', 'category created');
     }
+
 
     /**
      * Display the specified resource.
@@ -51,25 +64,26 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Request $request)
     {
-        alert("data");
-
+        return Category::find($request->id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SaveCategoryRequest $request, Category $category)
     {
-        //
+        $category->update($request->validate());
+
+        return redirect()->route('category.edit', $category);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return Category::where('id', $request->id)->delete();
     }
 }

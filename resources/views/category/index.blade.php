@@ -5,7 +5,7 @@
   @include('category.partials.header')
 
   <!-- Show Table Product -->
-  @include('category.partials.show')
+  @include('category.show')
 
   
 
@@ -18,7 +18,7 @@
 
   
   <!-- Delete Product Drawer -->
-  @include('category.partials.delete')
+  @include('category.delete')
 
   
   

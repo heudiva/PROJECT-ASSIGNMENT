@@ -54,6 +54,7 @@ Route::controller(CategoryController::class)
     // Route::post('/category', 'store')->name('category.store');
     Route::post('category/store', 'store')->name('category.store'); // Added proper naming & structure
     Route::post('category/edit', 'edit')->name('category.edit'); // Added proper naming & structure
+    Route::post('category/update', 'update')->name('category.update'); // Added proper naming & structure
 });
 
 

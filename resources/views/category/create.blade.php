@@ -23,6 +23,7 @@
     
 </div>
 
+{{-- 
 <script>
     $(document).ready(function() {
         $('#SubmitForm').on('submit', function(e) {
@@ -49,3 +50,4 @@
         });
     });
 </script>
+--}}
