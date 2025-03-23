@@ -7,7 +7,7 @@
 <div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0">
     <a href="{{ route('home') }}" class="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 text-white dark:text-white">
         <img src="https://flowbite.com/images/logo.svg" class="mr-4 h-11" alt="FlowBite Logo">
-        <span>WKSCHOOL</span>
+        <span>MYPROJECT</span>
     </a>
     <!-- Card -->
     <div class="cards w-full max-w-xl p-6 space-y-8 sm:p-8 rounded-lg shadow">
