@@ -2,10 +2,6 @@
     $avatarPath = 'uploads/users/' . Auth::user()->avatar;
     $empty = 'uploads/empty-image.jpg';
 @endphp
-{{-- <img class="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0" 
-id="profilePreview"
-src="{{ Auth::user()->avatar && file_exists(public_path($avatarPath)) ? asset($avatarPath) : asset($empty) }}" 
-alt="User Avatar"> --}}
 <form method="POST" action="#" enctype="multipart/form-data" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
     @csrf
     @method('POST')
