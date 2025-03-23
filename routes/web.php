@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Categorys\CategoryController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Setting\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -51,10 +52,20 @@ Route::controller(CategoryController::class)
 ->middleware('auth')
 ->group(function () {
     Route::get('category', 'index')->name('category.index');
-    // Route::post('/category', 'store')->name('category.store');
     Route::post('category/store', 'store')->name('category.store'); // Added proper naming & structure
     Route::post('category/edit', 'edit')->name('category.edit'); // Added proper naming & structure
     Route::post('category/update', 'update')->name('category.update'); // Added proper naming & structure
+    Route::post('category/delete', 'delete')->name('category.delete'); // Added proper naming & structure
+    Route::post('category/destroy', 'destroy')->name('category.destroy'); // Added proper naming & structure
+});
+
+Route::controller(UserController::class)
+->middleware('auth')
+->prefix('admin/')
+->name('user.')
+->group(function () {
+    Route::get('users', 'index')->name('index');
+  
 });
 
 

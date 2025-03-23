@@ -10,7 +10,7 @@
   
 
   <!-- Breadcrumb -->
-  @include('category.partials.breadcrumb')
+  {{-- @include('category.partials.breadcrumb') --}}
 
   
   <!-- Edit Product Drawer -->
@@ -25,7 +25,7 @@
   <!-- Add Product Drawer -->
   @include('category.create')
 
-  
+
   
       </main>
 

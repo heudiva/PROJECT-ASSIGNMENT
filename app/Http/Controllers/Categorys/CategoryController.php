@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index', [
-            'categorys' => Category::all()
+            'categorys' => Category::orderBy('created_at')->paginate(5)
         ]);
     }
 
@@ -33,22 +33,12 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaveCategoryRequest $request)
     {
-        $category = new Category();
-        parse_str($request->input('data'), $formData);
-        $category->name=$formData['name'];
-        $category->name_khmer=$formData['name_khmer'];
-        $category->description=$formData['description'];
-        if(empty($formData['id']) || ($formData['id'] == ""))
-            $category->save();
-        else{
-            $category=Category::find($formData['id']);
-            $category->name=$formData['name'];
-            $category->name_khmer=$formData['name_khmer'];
-            $category->description=$formData['description'];
-        }
-        $category->update();
+        $category = Category::create($request->validated());
+
+        return redirect()->route('category.index', $category)
+            ->with('status', 'category created');
 
     }
 
@@ -69,14 +59,31 @@ class CategoryController extends Controller
         return Category::find($request->id);
     }
 
+    public function delete(Request $request)
+    {
+        return Category::find($request->id);
+    }
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(SaveCategoryRequest $request, Category $category)
+    public function update(Request $request)
     {
-        $category->update($request->validate());
+        $category = new Category();
+        parse_str($request->input('data'), $formData);
+        $category->name=$formData['name'];
+        $category->name_khmer=$formData['name_khmer'];
+        $category->description=$formData['description'];
+        if(empty($formData['id']) || ($formData['id'] == ""))
+            $category->save();
+        else{
+            $category=Category::find($formData['id']);
+            $category->name=$formData['name'];
+            $category->name_khmer=$formData['name_khmer'];
+            $category->description=$formData['description'];
+        }
+        $category->update();
 
-        return redirect()->route('category.edit', $category);
     }
 
     /**
@@ -84,6 +91,9 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
-        return Category::where('id', $request->id)->delete();
+        parse_str($request->input('data'), $formData);
+
+        return Category::where('id', $formData['id'])->delete();
+        // dd($request->ids);
     }
 }
