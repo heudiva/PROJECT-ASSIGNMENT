@@ -4,8 +4,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Categorys\CategoryController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Setting\SettingController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,8 +67,28 @@ Route::controller(UserController::class)
 ->name('user.')
 ->group(function () {
     Route::get('users', 'index')->name('index');
+    Route::post('users', 'store')->name('store');
   
 });
+
+Route::controller(MessageController::class)
+->middleware('auth')
+->name('message.')
+->group(function () {
+    Route::get('message', 'index')->name('index');
+  
+});
+
+Route::controller(SupplierController::class)
+->middleware('auth')
+->name('supplier.')
+->group(function () {
+    Route::get('supplier', 'index')->name('index');
+  
+});
+
+
+
 
 
 

@@ -23,7 +23,7 @@
   </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-800">
-  @include('message.messages')
+  @include('message.speed-dial')
 
   <nav>
     <x-navbar />
