@@ -46,3 +46,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        
+        $.ajax({
+            type: "POST",
+            url: "{{ route('user.store') }}",
+            data: {
+                "_token":"{{ csrf_token() }}",
+                data:data
+              },
+            success: function (response) {
+                
+            }
+        });
+
+    });
+</script>
