@@ -23,10 +23,17 @@
                     <span class="text-red-500 font-semibold">{{ $message }}</span>
                 @enderror
             </div>
-            <div>
+            <!-- <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-white dark:text-white">Your email</label>
                 <input type="email" name="email" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name@company.com" value="{{ old('email') }}" required>
                 @error('email')
+                    <span class="text-red-500 font-semibold">{{ $message }}</span>
+                @enderror
+            </div> -->
+            <div>
+                <label for="username" class="block mb-2 text-sm font-medium text-white dark:text-white">Your username</label>
+                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name@company.com" value="{{ old('username') }}" required>
+                @error('username')
                     <span class="text-red-500 font-semibold">{{ $message }}</span>
                 @enderror
             </div>
@@ -46,7 +53,7 @@
             </div>
             <div class="flex items-start">
                 <div class="flex items-center h-5">
-                    <input id="remember" aria-describedby="remember" name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-white dark:border-gray-600" required>
+                    <input id="remember" aria-describedby="remember" name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-white dark:border-gray-600">
                 </div>
                 <div class="ml-3 text-sm">
                     <label for="remember" class="font-medium text-white dark:text-white">I accept the <a href="#" class="text-primary-700 hover:underline dark:text-primary-500">Terms and Conditions</a></label>

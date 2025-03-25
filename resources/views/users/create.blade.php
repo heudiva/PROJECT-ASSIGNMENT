@@ -13,8 +13,14 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form method="post" action="{{route('user.store')}}">
-                    @csrf
+                <form >
+                   
+                    <div class="alert alert-danger print-error-msg" style="display:none">
+
+                        <ul></ul>
+        
+                    </div>
+
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
@@ -40,9 +46,85 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
-                    <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Add user</button>
+                    <button id="btnSaveUser" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Add user</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+
+
+ 
+
+<script type="text/javascript">
+
+    $.ajaxSetup({
+
+        headers: {
+
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        }
+
+    });
+
+  
+
+    $("#btnSaveUser").click(function(e){
+        e.preventDefault();
+     
+        var username = $("#username").val();
+        var name = $("#name").val();
+        var email = $("#email").val();
+
+
+        $.ajax({
+
+           type:'POST',
+
+           url:"{{ route('user.store') }}",
+
+           data:{username:username, name:name},
+
+           success:function(data){
+
+                if($.isEmptyObject(data.error)){
+
+                    alert(data.success);
+
+                    location.reload();
+
+                }else{
+
+                    printErrorMsg(data.error);
+
+                }
+
+           }
+
+        });
+
+    
+
+    });
+
+  
+
+    function printErrorMsg (msg) {
+
+        $(".print-error-msg").find("ul").html('');
+
+        $(".print-error-msg").css('display','block');
+
+        $.each( msg, function( key, value ) {
+
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+
+        });
+
+    }
+
+  
+
+</script>
