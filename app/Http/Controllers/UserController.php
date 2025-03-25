@@ -14,20 +14,17 @@ class UserController extends Controller
         return view('users.users', compact('users'));
     }
     
-    public function store(Request $request){
-        dd($request->input());
-        $request->validate([
-            'username' => 'required|string|max:50',
-            'name' => 'string|max:50', // Display name
-            'email' => 'email|unique:users,email|max:100'
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'username' => 'required|string|max:50|unique:users,username',
+            'name' => 'nullable|string|max:50',
+            'email' => 'nullable|email|unique:users,email|max:100'
         ]);
 
-        $user = new User();
-        $user->username = $request->username;
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user = User::create($validated);
 
-        $user->save();
-
+        return redirect()->route('user.index', $user)
+            ->with('success', 'User created successfully!');
     }
 }

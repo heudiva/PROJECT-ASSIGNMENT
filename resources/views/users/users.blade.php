@@ -24,13 +24,13 @@
                                         Name
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Biography
+                                        Email Address
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Position
+                                        Created At
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Country
+                                        Permission
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                         Status
@@ -54,15 +54,19 @@
                                         <img class="w-10 h-10 rounded-full" src="{{ $user->avatar ? asset($avatarPath . $user->avatar) : asset($empty) }}" alt="User Avatar">
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
                                             <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $user->name }}</div>
-                                            <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $user->email }}</div>
+                                            <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $user->username }}</div>
                                         </div>
                                     </td>
-                                    <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">I love working with React and Flowbites to create efficient and user-friendly interfaces. In my spare time, I enjoys baking, hiking, and spending time with my family.</td>
-                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">Front-end developer</td>
-                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">United States</td>
+                                    <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $user->email }}</td>
+                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white ">{{ $user->created_at }}</td>
+                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white capitalize">{{ $user->usertype }}</td>
                                     <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                         <div class="flex items-center">
-                                             <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>  Active
+                                            @if($user->status == 1)
+                                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Active
+                                            @else
+                                                <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">

@@ -23,9 +23,9 @@ class SaveUserRequrst extends FormRequest
     {
         return [
             'username' => 'required|string|max:50|unique:users,username',
-            'name' => 'required|string|max:50', // Display name
-            'email' => 'required|email|unique:users,email|max:100',
-            'usertype' => 'required|string',
+            'name' => 'string|max:50', // Display name
+            'email' => 'email|unique:users,email|max:100',
+            'usertype' => 'string',
             'password' => 'required|string|min:8',
             'avatar' => 'nullable|image|max:2048',
             'status' => 'required|integer',
