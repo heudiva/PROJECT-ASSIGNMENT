@@ -36,7 +36,7 @@ class UserController extends Controller
         $user = User::create($validated);
 
         return redirect()->route('user.index', $user)
-            ->with('success', 'User created successfully!');
+            ->with('success ', 'User created successfully!');
 
     }
 }
