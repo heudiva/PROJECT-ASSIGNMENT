@@ -18,7 +18,7 @@
             @csrf
             <div>
                 <label for="name" class="block mb-2 text-sm font-medium text-white dark:text-white">Display Name</label>
-                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="username" value="{{ old('name') }}" required>
+                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="full name" value="{{ old('name') }}" required>
                 @error('name')
                     <span class="text-red-500 font-semibold">{{ $message }}</span>
                 @enderror
@@ -32,7 +32,7 @@
             </div> -->
             <div>
                 <label for="username" class="block mb-2 text-sm font-medium text-white dark:text-white">Your username</label>
-                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name@company.com" value="{{ old('username') }}" required>
+                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="username" value="{{ old('username') }}" required>
                 @error('username')
                     <span class="text-red-500 font-semibold">{{ $message }}</span>
                 @enderror
