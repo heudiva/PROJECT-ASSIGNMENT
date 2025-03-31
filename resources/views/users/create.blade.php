@@ -57,46 +57,47 @@
 
  
 <script type="text/javascript">
+    $(document).ready(function() {
     $("#btnSaveUser").click(function(e){
         e.preventDefault();
-        var data = $('#SubmitForm').serialize();
+
         var username = $("#username").val();
         var name = $("#name").val();
         var email = $("#email").val();
-
-        alert(username + name + email)
 
         $.ajax({
             type: 'POST',
             url: "{{ route('user.store') }}",
             data: {
                 "_token": "{{ csrf_token() }}",
-                data:data,
+                "username": username,
+                "name": name,
+                "email": email
             },
-            dataType: 'json',  // Expecting JSON response
-            contentType: false
-            success: function (data) {
-                if ($.isEmptyObject(data.error)) {
-                    alert(data.success);  // Show success message
-                    location.reload();  // Reload the page to reflect the new data
+            dataType: 'json',
+            success: function (response) {
+                if (response.error) {
+                    printErrorMsg(response.error);
                 } else {
-                    printErrorMsg(data.error);  // Display error messages if any
+                    alert(response.success);
+                    location.reload();
                 }
             },
-            error: function(xhr, status, error) {
-                alert("An error occurred while saving the user. Please try again.");
-                console.log("AJAX Error: " + status + ": " + error);  // Log error for debugging
+            error: function(xhr) {
+                alert("An error occurred. Please try again.");
+                console.log(xhr.responseText);
             }
         });
-
     });
 
-    function printErrorMsg (msg) {
+    function printErrorMsg(msg) {
         $(".print-error-msg").find("ul").html('');
-        $(".print-error-msg").css('display','block');
+        $(".print-error-msg").css('display', 'block');
         $.each(msg, function(key, value) {
             $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
         });
     }
+});
+
     
 </script>
