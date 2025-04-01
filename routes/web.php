@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Categorys\CategoryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Setting\SettingController;
@@ -99,7 +100,13 @@ Route::controller(SupplierController::class)
 
 
 
+Route::controller(ImageController::class)->group(function(){
 
+    Route::get('image-upload', 'index');
+
+    Route::post('image-upload', 'store')->name('image.store');
+
+});
 
 
 
