@@ -41,8 +41,7 @@
                     alert("Successfully submitted!");
                     $('#SubmitForm')[0].reset(); // Reset form
                     // $('#drawer-create-product-default').addClass('hidden'); // Hide drawer
-                    
-                    // Redirect to category index
+
                     window.location.href = "{{ route('category.index') }}";
                 },
                 error: function(xhr) {

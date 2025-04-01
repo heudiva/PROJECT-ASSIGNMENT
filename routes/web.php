@@ -41,6 +41,11 @@ Route::middleware('auth')->group(function () {
     
 });
 
+Route::middleware('auth')->group(function () {
+    route::POST('/users/creates',[UserController::class,'store'])->name('admin.dashboard.user');
+    
+});
+
 Route::controller(ProductController::class)
     ->group(function(){
         Route::get('/product', 'index')
