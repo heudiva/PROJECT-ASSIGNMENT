@@ -40,7 +40,6 @@
                 success: function(response) {
                     alert("Successfully submitted!");
                     $('#SubmitForm')[0].reset(); // Reset form
-                    // $('#drawer-create-product-default').addClass('hidden'); // Hide drawer
 
                     window.location.href = "{{ route('category.index') }}";
                 },

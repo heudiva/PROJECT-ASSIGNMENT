@@ -42,11 +42,6 @@ Route::middleware('auth')->group(function () {
     
 });
 
-Route::middleware('auth')->group(function () {
-    route::POST('/users/creates',[UserController::class,'store'])->name('admin.dashboard.user');
-    
-});
-
 Route::controller(ProductController::class)
     ->group(function(){
         Route::get('/product', 'index')
@@ -75,6 +70,8 @@ Route::controller(UserController::class)
 ->group(function () {
     Route::get('users', 'index')->name('index');
     Route::post('users', 'store')->name('store');
+    Route::get('show', 'show')->name('show');
+
   
 });
 
