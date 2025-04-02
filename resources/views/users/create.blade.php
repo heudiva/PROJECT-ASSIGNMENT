@@ -70,9 +70,11 @@
                     if (response.error) {
                         printErrorMsg(response.error);
                     } else {
-                        alert(response.success);
-                        // location.reload();
+                        // alert(response.success);
+                        location.reload();
                         $("#close-form").click();
+                        fetchrecord();
+
                     }
                 },
                 error: function(xhr) {
@@ -88,7 +90,6 @@
                 $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
             });
         }
-
         });
 
 
