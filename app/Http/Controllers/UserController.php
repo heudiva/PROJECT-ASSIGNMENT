@@ -18,6 +18,11 @@ class UserController extends Controller
         return view('users.users', compact('users'));
     }
 
+    public function show()
+    {
+        return User::orderBy('id', 'desc')->get();
+    }
+
     public function store(Request $request)
     {
         // Parse the incoming data string into an array
