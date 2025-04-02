@@ -75,6 +75,10 @@ Route::controller(UserController::class)
 ->group(function () {
     Route::get('users', 'index')->name('index');
     Route::post('users', 'store')->name('store');
+    Route::post('edit', 'edit')->name('edit');
+    Route::post('update', 'update')->name('update');
+    Route::post('delete', 'delete')->name('delete');
+    Route::post('destroy', 'destroy')->name('destroy');
   
 });
 
@@ -101,11 +105,8 @@ Route::controller(SupplierController::class)
 
 
 Route::controller(ImageController::class)->group(function(){
-
     Route::get('image-upload', 'index');
-
     Route::post('image-upload', 'store')->name('image.store');
-
 });
 
 

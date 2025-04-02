@@ -92,8 +92,6 @@ class CategoryController extends Controller
     public function destroy(Request $request)
     {
         parse_str($request->input('data'), $formData);
-
         return Category::where('id', $formData['id'])->delete();
-        // dd($request->ids);
     }
 }
