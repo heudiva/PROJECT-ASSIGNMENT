@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -31,7 +31,9 @@ class UserController extends Controller
         $validator = Validator::make($formData, [
             'username' => 'required|string|max:50|unique:users,username',
             'name' => 'required|nullable|string|max:50',
-            'email' => 'nullable|email|max:100|unique:users,email'
+            'email' => 'nullable|email|max:100|unique:users,email',
+            'usertype' => 'required',
+            
         ]);
 
         if ($validator->fails()) {
@@ -42,6 +44,7 @@ class UserController extends Controller
         $user->username = strtolower($formData['username']);
         $user->name =  $formData['name'];
         $user->email = strtolower($formData['email']);
+        $user->usertype = isset($formData['usertype']) ? strtolower($formData['usertype']) : null;
         $user->status = 0;
 
         $user->save();
@@ -72,8 +75,8 @@ class UserController extends Controller
             'username' => 'required|string|max:50|unique:users,username,' . ($user->id ?? 'NULL'),
             'name' => 'nullable|string|max:50',
             'email' => 'nullable|email|max:100|unique:users,email,' . ($user->id ?? 'NULL'),
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'usertype' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -84,6 +87,7 @@ class UserController extends Controller
         $user->username = strtolower($formData['username']);
         $user->name = $formData['name'] ?? null;
         $user->email = isset($formData['email']) ? strtolower($formData['email']) : null;
+        $user->usertype = isset($formData['usertype']) ? strtolower($formData['usertype']) : null;
         $user->password = Hash::make($formData['password']); // Fixing the password hashing
 
         // Set status accordingly
