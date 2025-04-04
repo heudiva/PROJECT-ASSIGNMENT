@@ -18,7 +18,7 @@
                     data: data
                 },
                 success: function(response) {
-                    alert("Successfully submitted!");
+                    // alert("Successfully submitted!");
                     $('#SubmitForm')[0].reset(); // Reset form
                 },
                 error: function(xhr) {

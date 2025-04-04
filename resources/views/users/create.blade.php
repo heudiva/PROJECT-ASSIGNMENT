@@ -61,7 +61,7 @@
                     if (response.error) {
                         printErrorMsg(response.error);
                     } else {
-                        alert(response.success);
+                        // alert(response.success);
                         location.reload();
                         $("#close-form").click();
 
