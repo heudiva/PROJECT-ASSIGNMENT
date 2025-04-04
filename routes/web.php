@@ -8,12 +8,15 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Setting\SettingController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('test', [TestController::class, 'index'])->name('test');
 
 
 Route::middleware('auth')->group(function () {
