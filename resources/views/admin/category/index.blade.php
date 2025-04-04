@@ -2,10 +2,10 @@
 
     <main>
    <!-- Show Header -->
-  @include('category.partials.header')
+  @include('admin.category.partials.header')
 
   <!-- Show Table Product -->
-  @include('category.show')
+  @include('admin.category.show')
 
   
 
@@ -14,16 +14,16 @@
 
   
   <!-- Edit Product Drawer -->
-  @include('category.edit')
+  @include('admin.category.edit')
 
   
   <!-- Delete Product Drawer -->
-  @include('category.delete')
+  @include('admin.category.delete')
 
   
   
   <!-- Add Product Drawer -->
-  @include('category.create')
+  @include('admin.category.create')
 
 
   

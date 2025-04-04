@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 class SupplierController extends Controller
 {
     /**
@@ -13,7 +18,7 @@ class SupplierController extends Controller
     public function index()
     {
         
-        return view('supplier.suppliers');
+        return view('admin.supplier.suppliers');
     }
 
     /**

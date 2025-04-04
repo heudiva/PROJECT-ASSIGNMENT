@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Products;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
+
 class ProductController extends Controller
 {
     /**
@@ -12,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index', [
+        return view('admin.product.index', [
             'products'=> Product::all()
         ]);
     }
