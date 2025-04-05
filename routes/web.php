@@ -40,4 +40,5 @@ Route::controller(ImageController::class)->group(function(){
 
 
 
+
 require __DIR__.'/auth.php';

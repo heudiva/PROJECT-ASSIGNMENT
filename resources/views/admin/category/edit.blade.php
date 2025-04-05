@@ -63,7 +63,6 @@
                 data:data
               },
               success: function(response) {
-                  alert("Successfully submitted!");
                   window.location.href = "{{ route('category.index') }}";
               },
               error: function(xhr) {

@@ -4,7 +4,7 @@
 
 
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         $('#EditUserForm').on('submit', function(e) {
             e.preventDefault();
@@ -31,4 +31,4 @@
 
 
     });
-</script>
+</script> --}}

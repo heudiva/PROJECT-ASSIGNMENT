@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(8); // Paginate for better performance
+        $users = User::paginate(6); // Paginate for better performance
         return view('users.users', compact('users'));
     }
 
@@ -112,5 +112,16 @@ class UserController extends Controller
     {
         parse_str($request->input('data'), $formData);
         return User::where('id', $formData['id'])->delete();
+    }
+
+    public function delete_users(Request $request){
+        $userIds = $request->ids;
+    
+        if (!$userIds) {
+            return response()->json(['message' => 'No users selected!'], 400);
+        }
+
+        User::whereIn('id', $userIds)->delete();
+        return response()->json(['message' => 'Users deleted successfully!']);
     }
 }

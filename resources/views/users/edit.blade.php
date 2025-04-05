@@ -121,7 +121,7 @@
                     if (response.error) {
                         printErrorMsg(response.error);
                     } else {
-                        alert(response.success);
+                        // alert(response.success);
                         $("#close-form").click();
                         location.reload();
 

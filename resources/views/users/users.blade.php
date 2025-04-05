@@ -46,7 +46,7 @@
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
-                                            <input id="checkbox-{{ $user->id }}" aria-describedby="checkbox-1" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                                            <input data-id="{{ $user->id }}" aria-describedby="checkbox-1" type="checkbox" class="user-checkbox w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
                                             <label for="checkbox-{{ $user->id }}" class="sr-only">checkbox</label>
                                         </div>
                                     </td>
@@ -106,12 +106,36 @@
 
 
 <script>
+    // Search User in header file
     $(document).ready(function(){
+        //#myInput is id for search input
       $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
+
         $("#myTable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
+        
       });
+    
+
+
+    // Handle 'Select All' checkbox
+    $('#checkbox-all').on('change', function () {
+        $('.user-checkbox').prop('checked', $(this).prop('checked'));
     });
+
+    // If any individual checkbox is unchecked, uncheck 'Select All'
+    $('.user-checkbox').on('change', function () {
+        if ($('.user-checkbox:checked').length === $('.user-checkbox').length) {
+            $('#checkbox-all').prop('checked', true);
+        } else {
+            $('#checkbox-all').prop('checked', false);
+        }
+    });
+
+});
+
 </script>
+
+

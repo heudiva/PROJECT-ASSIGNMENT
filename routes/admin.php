@@ -31,9 +31,10 @@ Route::controller(UserController::class)
     Route::post('update', 'update')->name('update');
     Route::post('delete', 'delete')->name('delete');
     Route::post('destroy', 'destroy')->name('destroy');
+
+    Route::post('delete-users', 'delete_users')->name('deletes');
   
 });
-
 
 Route::middleware('auth')->group(function () {
     route::get('/dashboard/setting',[SettingController::class,'index'])->name('admin.dashboard.setting');
@@ -83,3 +84,6 @@ Route::controller(ProductController::class)
             ->name('product.store');
 
 });
+
+
+
