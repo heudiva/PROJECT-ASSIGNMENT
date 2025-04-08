@@ -19,7 +19,7 @@
                 <th scope="col" class="p-4">Last Update</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="productTable">
             @foreach ($products as $product)
             <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                 <td class="p-4 w-4">
@@ -260,3 +260,18 @@
         </tbody>
     </table>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+        //#myInput is id for search input
+      $("#simpleSearch").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+
+        $("#productTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        
+      });
+      });
+</script>
