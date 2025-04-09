@@ -45,6 +45,8 @@ class UserController extends Controller
         $user->name =  $formData['name'];
         $user->email = strtolower($formData['email']);
         $user->usertype = isset($formData['usertype']) ? strtolower($formData['usertype']) : null;
+        $user->password = Hash::make('Password123'); // Fixing the password hashing
+
         $user->status = 0;
 
         $user->save();

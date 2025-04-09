@@ -24,6 +24,11 @@
   </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-800">
+
+  @if (session('status'))
+    <div class="absolute z-50 text-red-600">{{ session('status') }}</div>
+  @endif
+
   @include('message.speed-dial')
 
   <nav>
@@ -33,7 +38,7 @@
   <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
 
     <aside>
-        <x-sidebar />
+        <x-admin-sidebar />
     </aside>
 
     <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>

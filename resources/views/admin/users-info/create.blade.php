@@ -22,8 +22,8 @@
                     <div class="grid grid-cols-6 gap-6">
                         <x-users.form />
                         <div class="col-span-6">
-                            <label for="biography" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biography</label>
-                            <textarea id="biography" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="👨‍💻Full-stack web developer. Open-source contributor."></textarea>
+                            <label for="biography" class="flex justify-between mb-2 text-sm font-medium text-gray-900 dark:text-white flix">Defualt Password <label for="status">Active <input type="checkbox" name="status" id="status" class="right-0"></label> </label>
+                            <textarea id="biography" disabled rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="👨‍💻Full-stack web developer. Open-source contributor.">Password123</textarea>
                         </div>
                     </div> 
                 </div>

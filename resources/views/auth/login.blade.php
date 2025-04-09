@@ -1,6 +1,6 @@
 <x-guest-layout>
 <link rel="stylesheet" href="{{ asset('assets/css/auth.css') }}">
-
+<x-errors />
 @include('auth/animations')
 
 <main class="main ">
