@@ -36,7 +36,7 @@
           
           $.ajax({
             type: "POST",
-            url: "{{ route('user.delete') }}",
+            url: "{{ route('admin.user.delete') }}",
             data: {
                 "_token":"{{ csrf_token() }}",
                 id:id
@@ -57,7 +57,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "{{ route('user.destroy') }}",
+                url: "{{ route('admin.user.destroy') }}",
                 data: {
                     "_token":"{{ csrf_token() }}",
                     data:data

@@ -36,7 +36,7 @@
           
           $.ajax({
             type: "POST",
-            url: "{{ route('user.delete') }}",
+            url: "{{ route('admin.user.delete') }}",
             data: {
                 "_token":"{{ csrf_token() }}",
                 id:id
@@ -65,7 +65,7 @@
             }
 
             $.ajax({
-                url: '{{ route('user.deletes') }}', // Update this to your actual endpoint
+                url: "{{ route('admin.user.deletes') }}", // Update this to your actual endpoint
                 type: 'POST',
                 data: { ids: selectedUsers },
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },

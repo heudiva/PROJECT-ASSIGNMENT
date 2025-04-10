@@ -12,7 +12,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "{{ route('user.edit') }}",
+                url: "{{ route('admin.user.edit') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     data: data

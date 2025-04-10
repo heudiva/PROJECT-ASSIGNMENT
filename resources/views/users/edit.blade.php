@@ -82,7 +82,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "{{ route('user.edit') }}",
+                url: "{{ route('admin.user.edit') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     id: id
@@ -111,7 +111,7 @@
             var data = $('#EditUserForm').serialize();
             $.ajax({
                 type: "POST",
-                url: "{{ route('user.update') }}",
+                url: "{{ route('admin.user.update') }}",
                 data: {
                     "_token":"{{ csrf_token() }}",
                     data:data

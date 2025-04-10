@@ -32,7 +32,7 @@
   @include('message.speed-dial')
 
   <nav>
-    <x-navbar />
+    <x-admin-navbar />
   </nav>
 
   <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">

@@ -23,10 +23,10 @@ route::get('admin/dashboard',[HomeController::class,'index'])
 Route::controller(UserController::class)
 ->middleware('auth')
 ->prefix('admin/')
-->name('user.')
+->name('admin.user.')
 ->group(function () {
     Route::get('users', 'index')->name('index');
-    Route::post('users', 'store')->name('store');
+    Route::post('users/store', 'store')->name('store');
     Route::post('edit', 'edit')->name('edit');
     Route::post('update', 'update')->name('update');
     Route::post('delete', 'delete')->name('delete');

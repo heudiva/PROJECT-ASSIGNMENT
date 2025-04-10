@@ -51,7 +51,7 @@
             var data = $('#UserCreateForm').serialize();
             $.ajax({
                 type: "POST",
-                url: "{{ route('user.store') }}",
+                url: "{{ route('admin.user.store') }}",
                 data: {
                     "_token":"{{ csrf_token() }}",
                     data:data
