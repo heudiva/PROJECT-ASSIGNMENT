@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id('product_id');
             $table->string('name', length:100)->nullable();
-            $table->string('name_khmer', length:50)->nullable();
+            $table->string('band', length:50)->nullable();
             $table->string('barcode', length:100)->nullable();
             $table->foreignId('category_id')->nullable();
             $table->foreignId('supplier_id')->nullable();
             $table->integer('qty_on_hand')->nullable();
             $table->integer('qty_alert')->nullable();
             $table->string('description', length:100)->nullable();
-            $table->char('stocktype', length:50)->nullable();
+            $table->char('stocktype', length:50)->nullable()->default('CUTSTOCK');
             $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -74,7 +74,7 @@
             
             $.ajax({
                 type: "POST",
-                url: "{{ route('category.edit') }}",
+                url: "{{ route('admin.category.edit') }}",
                 data: {
                     "_token":"{{ csrf_token() }}",
                     id:id
@@ -98,7 +98,7 @@
           
           $.ajax({
             type: "POST",
-            url: "{{ route('category.delete') }}",
+            url: "{{ route('admin.category.delete') }}",
             data: {
                 "_token":"{{ csrf_token() }}",
                 id:id

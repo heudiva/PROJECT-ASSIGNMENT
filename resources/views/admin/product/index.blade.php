@@ -11,7 +11,7 @@
         @include('admin.product.show')
 
         {{-- Breadcrumb button pagination --}}
-        @include('admin.product.partials.breadcrumb')
+        {{-- @include('admin.product.partials.breadcrumb') --}}
 
         </div>
     </div>
@@ -19,7 +19,10 @@
 <!-- End block -->
 @include('admin.product.partials.end-block')
 
-<!-- drawer component -->
+<!-- drawer component create-->
+@include('admin.product.create')
+
+<!-- drawer component edit-->
 @include('admin.product.edit')
 
 <!-- Preview Drawer -->

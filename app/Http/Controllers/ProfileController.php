@@ -54,7 +54,7 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
-
+        
         Auth::logout();
 
         $user->delete();
@@ -63,5 +63,17 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    // image store
+
+    public function imageStore(Request $request){
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('uploads/users'), $imageName);
+        User::create(['avatar' => $imageName]);
+        return response()->json('Image uploaded successfully');
     }
 }

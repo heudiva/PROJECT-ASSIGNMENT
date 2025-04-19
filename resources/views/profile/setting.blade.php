@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
 
 <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
     {{-- Breadcrumb --}}
@@ -44,18 +44,5 @@
     
 </div>
 
-</x-layout>
+</x-app-layout>
 
-<script>
-    function previewImage(event) {
-        const input = event.target;
-        const reader = new FileReader();
-        reader.onload = function () {
-            const preview = document.getElementById('profilePreview');
-            preview.src = reader.result;
-        };
-        if (input.files && input.files[0]) {
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>

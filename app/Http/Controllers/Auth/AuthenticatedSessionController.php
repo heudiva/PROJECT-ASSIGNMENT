@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         }
     
         // Redirect based on user type
-        return redirect()->route($user->usertype === 'admin' ? 'dashboard' : 'dashboard');
+        return redirect()->route($user->usertype === 'admin' || $user->usertype === 'supperadmin' ? 'dashboard' : 'home');
     }
     
 

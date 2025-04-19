@@ -33,7 +33,7 @@ class UserController extends Controller
             'name' => 'required|nullable|string|max:50',
             'email' => 'nullable|email|max:100|unique:users,email',
             'usertype' => 'required',
-            
+            'status' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -46,8 +46,10 @@ class UserController extends Controller
         $user->email = strtolower($formData['email']);
         $user->usertype = isset($formData['usertype']) ? strtolower($formData['usertype']) : null;
         $user->password = Hash::make('Password123'); // Fixing the password hashing
-
-        $user->status = 0;
+        if(!empty($formData['status']))
+            $user->status = $formData['status'];
+        else
+            $user->status = 0;
 
         $user->save();
 
@@ -77,7 +79,7 @@ class UserController extends Controller
             'username' => 'required|string|max:50|unique:users,username,' . ($user->id ?? 'NULL'),
             'name' => 'nullable|string|max:50',
             'email' => 'nullable|email|max:100|unique:users,email,' . ($user->id ?? 'NULL'),
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
             'usertype' => 'required',
         ]);
 
@@ -117,6 +119,7 @@ class UserController extends Controller
     }
 
     public function delete_users(Request $request){
+        
         $userIds = $request->ids;
     
         if (!$userIds) {

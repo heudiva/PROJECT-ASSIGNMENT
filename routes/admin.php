@@ -6,9 +6,12 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+//admin
+Route::group(['prefix' => 'admin/' , 'middleware' => ['auth','admin']], function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,13 +23,28 @@ route::get('admin/dashboard',[HomeController::class,'index'])
 ->name('admin.dashboard');
 
 
+Route::controller(ProfileController::class)
+->name('admin.profile.')
+->prefix('profile')
+->group(function(){
+    Route::get('edit', 'edit')->name('edit');
+    Route::patch('update', 'update')->name('update');
+    Route::delete('destroy', 'destroy')->name('destroy');
+    Route::post('store', 'imageStore')->name('image.store');
+});
+
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+
+        
 Route::controller(UserController::class)
-->middleware('auth')
-->prefix('admin/')
+->prefix('dashboard/user')
 ->name('admin.user.')
 ->group(function () {
     Route::get('users', 'index')->name('index');
-    Route::post('users/store', 'store')->name('store');
+    Route::post('store', 'store')->name('store');
     Route::post('edit', 'edit')->name('edit');
     Route::post('update', 'update')->name('update');
     Route::post('delete', 'delete')->name('delete');
@@ -42,8 +60,20 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::controller(ProductController::class)
+// ->middleware('auth')
+->name('admin.')
+->group(function () {
+    Route::get('product', 'index')->name('product.index');
+    Route::post('product/store', 'store')->name('product.store'); // Added proper naming & structure
+    Route::post('product/edit', 'edit')->name('product.edit'); // Added proper naming & structure
+    Route::post('product/update', 'update')->name('product.update'); // Added proper naming & structure
+    Route::post('product/delete', 'delete')->name('product.delete'); // Added proper naming & structure
+    Route::post('product/destroy', 'destroy')->name('product.destroy'); // Added proper naming & structure
+});
+
 Route::controller(CategoryController::class)
-->middleware('auth')
+->name('admin.')
 ->group(function () {
     Route::get('category', 'index')->name('category.index');
     Route::post('category/store', 'store')->name('category.store'); // Added proper naming & structure
@@ -53,37 +83,26 @@ Route::controller(CategoryController::class)
     Route::post('category/destroy', 'destroy')->name('category.destroy'); // Added proper naming & structure
 });
 
-
-
 Route::controller(MessageController::class)
-->middleware('auth')
 ->name('message.')
 ->group(function () {
     Route::get('message', 'index')->name('index');
   
 });
 
-
-
 Route::controller(SupplierController::class)
-->middleware('auth')
-->name('supplier.')
-->group(function () {
-    Route::get('supplier', 'index')->name('index');
-  
+->name('admin.')
+->group(function()
+{
+    Route::get('suppliers', 'index')->name('supplier.index');
 });
 
 
 
-Route::controller(ProductController::class)
-    ->group(function(){
-        Route::get('/product', 'index')
-            ->name('product.index');
-            
-        Route::post('/product', 'store')
-            ->name('product.store');
+
 
 });
+
 
 
 

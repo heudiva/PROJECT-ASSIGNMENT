@@ -104,6 +104,7 @@
         <!-- Delete User Modal Checkbox -->
         @include('admin.users-info.delete-checkbox')
 
+
     </main>
 </x-app-layout>
 

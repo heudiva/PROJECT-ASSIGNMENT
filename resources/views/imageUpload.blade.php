@@ -15,7 +15,7 @@
             </div>
             <div class="panel-body">
                 <img id="preview-image" width="300px">
-                <form action="{{ route('image.store') }}" method="POST" id="image-upload" enctype="multipart/form-data">
+                <form action="#" method="POST" id="image-upload" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="inputImage">Image:</label>
@@ -37,16 +37,19 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    
     $('#inputImage').change(function() {
         let reader = new FileReader();
         reader.onload = (e) => {
             $('#preview-image').attr('src', e.target.result);
         }
         reader.readAsDataURL(this.files[0]);
-    });
+    });// previeviw Image
+
     $('#image-upload').submit(function(e) {
         e.preventDefault();
         let formData = new FormData(this);
+
         $('#image-input-error').text('');
         $.ajax({
             type: 'POST',

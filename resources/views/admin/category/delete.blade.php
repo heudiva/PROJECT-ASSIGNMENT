@@ -27,14 +27,14 @@
           var data = $('#FormDeleteCategory').serialize();  // Serialize form data
           
           $.ajax({
-              url: "{{ route('category.destroy') }}",  // Use Laravel route helper
+              url: "{{ route('admin.category.destroy') }}",  // Use Laravel route helper
               type: "POST",
               data: {
                 "_token":"{{ csrf_token() }}",
                 data:data
               },
               success: function(response) {
-                  window.location.href = "{{ route('category.index') }}";
+                  window.location.href = "{{ route('admin.category.index') }}";
               },
               error: function(xhr) {
                   console.error("Error:", xhr.responseText);
