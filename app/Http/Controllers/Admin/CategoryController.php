@@ -34,8 +34,8 @@ class CategoryController extends Controller
     {
         $category = Category::create($request->validated());
 
-        return redirect()->route('admin.category.index', $category)
-            ->with('status', 'category created');
+        // return redirect()->route('admin.category.index', $category)
+        //     ->with('status', 'category created');
 
     }
 

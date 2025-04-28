@@ -8,35 +8,26 @@ use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+// -------------- Display the list of products --------------
     public function index()
     {
         return view('admin.product.index', [
-            'products' => Product::with('category')->paginate(5),
+            'products' => Product::with('category')->paginate(1),
             'categories' => Category::all(),
             'suppliers' => Supplier::all()
         ]);
-    }
+    } // End index funcation
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create() {}
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    // បង្កើត method សម្រាប់ទទួល data ដែលផ្ញើមកជា string
+// ---------------------- Store Product ----------------------
     public function store(Request $request)
     {
-        // បំបែក string ទៅជា array
+        // Parse the serialized form data into an array
         parse_str($request->input('data'), $formData);
 
-        // ផ្ទៀងផ្ទាត់ទិន្នន័យ
+        // Validate the form data
         $validator = Validator::make($formData, [
             'name' => 'required|string',
             'category' => 'nullable',
@@ -46,12 +37,12 @@ class ProductController extends Controller
             'description' => 'nullable',
         ]);
 
-        // ប្រសិនបើ error វិញ ចេញ message
+        // Return validation errors if any
         if ($validator->failed()) {
             return response()->json(['error' => $validator->errors()]);
         }
 
-        // បង្កើត object Product ថ្មី
+        // Create and save the new product
         $pro = new Product();
         $pro->name = $formData['name'];
         $pro->category_id = $formData['category'];
@@ -59,9 +50,9 @@ class ProductController extends Controller
         $pro->qty_on_hand = $formData['qty-onhand'];
         $pro->qty_alert = $formData['qty-alert'];
         $pro->description = $formData['description'];
-        $pro->save(); // រក្សាទុកក្នុង database
+        $pro->save();
 
-        // បង្កើតជាមួយ success response
+        // Return success response
         return response()->json([
             'success' => true,
             'message' => 'Product created successfully',
@@ -70,35 +61,9 @@ class ProductController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Request $request)
-    {
-        return Product::find($request->id);
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+
+
 }

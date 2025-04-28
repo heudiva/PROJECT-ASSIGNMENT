@@ -1,39 +1,37 @@
 <x-app-layout>
-    
+
 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-900  antialiased">
     <div class="mx-auto ">
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
         {{-- Header --}}
-        @include('admin.product.partials.header')
+        @include('product.partials.header')
 
         {{-- Show All Product --}}
-        @include('admin.product.show')
+        @include('product.show')
 
         {{-- Breadcrumb button pagination --}}
-        {{-- @include('admin.product.partials.breadcrumb') --}}
+        @include('product.partials.breadcrumb')
 
         </div>
     </div>
 </section>
 <!-- End block -->
-@include('admin.product.partials.end-block')
+@include('product.partials.end-block')
 
-<!-- drawer component create-->
-@include('admin.product.create')
-
-<!-- drawer component edit-->
-@include('admin.product.edit')
+<!-- drawer component -->
 
 <!-- Preview Drawer -->
-@include('admin.product.preview')
+@include('product.preview')
 
+@include('product.partials.create')
+
+@include('product.partials.create_update')
 <!-- Delete Modal -->
-@include('admin.product.delete')
-
-  <!-- Add Product Drawer -->
-  @include('admin.category.create')
+@include('product.delete')
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </x-guest-layout>
+
+

@@ -60,17 +60,17 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::controller(ProductController::class)
-// ->middleware('auth')
-->name('admin.')
-->group(function () {
-    Route::get('product', 'index')->name('product.index');
-    Route::post('product/store', 'store')->name('product.store'); // Added proper naming & structure
-    Route::post('product/edit', 'edit')->name('product.edit'); // Added proper naming & structure
-    Route::post('product/update', 'update')->name('product.update'); // Added proper naming & structure
-    Route::post('product/delete', 'delete')->name('product.delete'); // Added proper naming & structure
-    Route::post('product/destroy', 'destroy')->name('product.destroy'); // Added proper naming & structure
-});
+// Route::controller(ProductController::class)
+// // ->middleware('auth')
+// ->name('admin.')
+// ->group(function () {
+//     Route::get('product', 'index')->name('product.index');
+//     Route::post('product/store', 'store')->name('product.store'); // Added proper naming & structure
+//     Route::post('product/edit', 'edit')->name('product.edit'); // Added proper naming & structure
+//     Route::post('product/update', 'update')->name('product.update'); // Added proper naming & structure
+//     Route::post('product/delete', 'delete')->name('product.delete'); // Added proper naming & structure
+//     Route::post('product/destroy', 'destroy')->name('product.destroy'); // Added proper naming & structure
+// });
 
 Route::controller(CategoryController::class)
 ->name('admin.')
@@ -82,6 +82,25 @@ Route::controller(CategoryController::class)
     Route::post('category/delete', 'delete')->name('category.delete'); // Added proper naming & structure
     Route::post('category/destroy', 'destroy')->name('category.destroy'); // Added proper naming & structure
 });
+Route::post('/category/get', [CategoryController::class, 'getCategory']);
+Route::get('/categories', [CategoryController::class, 'getCategories'])->name('categories.get');
+
+
+// ---------------------------------------- Sey
+Route::controller(ProductController::class)
+->name('admin.')
+->group(function () {
+    Route::get('product', 'index')->name('product.index');
+    Route::get('/product/create', 'create')->name('product.create');
+    Route::post('/product/store', 'store')->name('product.store');
+    Route::delete('/product/{id}', 'destroy')->name('product.destroy');
+    Route::get('product/{id}', 'show');
+    Route::get('/product/edit', 'edit')->name('product.edit');
+    Route::post('/product/update', 'update')->name('product.update');
+    Route::delete('/product/{id}', 'destroy')->name('product.destroy');
+    Route::post('product/destroy', 'destroy')->name('product.delete-multiple'); // Added proper naming & structure
+});
+
 
 Route::controller(MessageController::class)
 ->name('message.')
@@ -96,9 +115,6 @@ Route::controller(SupplierController::class)
 {
     Route::get('suppliers', 'index')->name('supplier.index');
 });
-
-
-
 
 
 });
