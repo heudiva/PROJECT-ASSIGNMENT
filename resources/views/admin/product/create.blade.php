@@ -10,7 +10,6 @@
         </button>
         {{-- input --}}
         <div class="grid gap-4 sm:grid-cols-3 sm:gap-6 ">
-            {{-- <x-products.form /> --}}
             @include("components.products.form")
         </div>
         {{-- end input  --}}

@@ -110,10 +110,13 @@ Route::controller(MessageController::class)
 });
 
 Route::controller(SupplierController::class)
+->prefix('supplier')
 ->name('admin.')
 ->group(function()
 {
-    Route::get('suppliers', 'index')->name('supplier.index');
+    Route::get('index', 'index')->name('supplier.index');
+    Route::post('store', 'store')->name('supplier.store');
+    Route::post('edit', 'edit')->name('supplier.edit');
 });
 
 

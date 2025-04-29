@@ -10,6 +10,8 @@
         </button>
         {{-- input --}}
         <div class="grid gap-4 sm:grid-cols-3 sm:gap-6 ">
+        <input type="text" id="ids" name="id">
+
             @include("components.products.form")
         </div>
         {{-- end input  --}}
@@ -28,88 +30,26 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('#closeform').on('click', function(e){
-            e.preventDefault();
-            $('#product-create-form')[0].reset();
-
-        });
-
-
-
-        $(document).on('click', '#edit-product-btn', function(e) {
-            e.preventDefault();
-            var id = $(this).val();
-            $('#product-edit-form')[0].reset();
-            alert('ss');
-
-            $.ajax({
-                type: "POST",
-                url: "{{ route('admin.product.edit') }}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    id: id
-                },
-                success: function(response) {
-            // alert('ss');
-
-                    $('#id').val(response.product_id);
-                    $('#barcode').val(response.username);
-                    $('#name').val(response.name);
-                    $('#brand').val(response.brand);
-                    // Ensure correct selection of usertype
-                    $('#category').val(response.category_id).change();
-
-                    // Alternative method if .val(response.usertype) doesn't work
-                    $('#category option').each(function() {
-                        if ($(this).val() === response.category_id) {
-                            $(this).prop('selected', true);
-                        }
-                    });
-                },
-                error: function(xhr){
-            alert('dd');
-
-                }
-            });
-
-        });
-
-        $('#EditUserForm').on('submit', function(e){
-            e.preventDefault();
-            var data = $('#EditUserForm').serialize();
-            $.ajax({
-                type: "POST",
-                url: "{{ route('admin.user.update') }}",
-                data: {
-                    "_token":"{{ csrf_token() }}",
-                    data:data
-                },
-                dataType: "json",
-                success: function (response) {
-                    if (response.error) {
-                        printErrorMsg(response.error);
-                    } else {
-                        // alert(response.success);
-                        $("#close-form").click();
-                        location.reload();
-
-                    }
-                },
-                error: function(xhr) {
-                    alert("An error occurred. Please try again.");
-                    console.log(xhr.responseText);
-                }
-            });
-
-            function printErrorMsg(msg) {
-                $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display', 'block');
-                $.each(msg, function(key, value) {
-                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-                });
+$(document).ready(function(){
+    $('.edit-product-btn').on('click', function(e){
+        e.preventDefault();
+        var id = $(this).data('id'); // Use data-id instead of val()
+        alert(id);
+        $.ajax({
+            type: "POST",
+            url: "{{ route('admin.product.edit') }}",
+            data: {
+                _token: "{{ csrf_token() }}",
+                id: id
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log(response); // See what you get
+                $('#ids').val(response.product_id);
             }
         });
 
     });
+});
+
 </script>

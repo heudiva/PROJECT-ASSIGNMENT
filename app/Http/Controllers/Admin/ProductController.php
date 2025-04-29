@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.product.index', [
-            'products' => Product::with('category')->paginate(1),
+            'products' => Product::with('category')->paginate(5),
             'categories' => Category::all(),
             'suppliers' => Supplier::all()
         ]);
@@ -30,11 +30,13 @@ class ProductController extends Controller
         // Validate the form data
         $validator = Validator::make($formData, [
             'name' => 'required|string',
+            'brand' => 'nullable',
             'category' => 'nullable',
             'supplier' => 'nullable',
             'qty-onhand' => 'nullable',
             'qty-alert' => 'nullable',
             'description' => 'nullable',
+            'barcode' => 'nullable',
         ]);
 
         // Return validation errors if any
@@ -45,11 +47,13 @@ class ProductController extends Controller
         // Create and save the new product
         $pro = new Product();
         $pro->name = $formData['name'];
+        $pro->brand = $formData['brand'];
         $pro->category_id = $formData['category'];
         $pro->supplier_id = $formData['supplier'];
         $pro->qty_on_hand = $formData['qty-onhand'];
         $pro->qty_alert = $formData['qty-alert'];
         $pro->description = $formData['description'];
+        $pro->barcode = $formData['barcode'];
         $pro->save();
 
         // Return success response
@@ -58,8 +62,15 @@ class ProductController extends Controller
             'message' => 'Product created successfully',
             'product' => $pro
         ], 201); // 201 = Created
-    }
+    } // End Store Product
 
+
+// ---------------------- Store Product ----------------------
+    public function edit(Request $request)
+    {
+        $product = Product::where('product_id', $request->id)->first();
+        return response()->json($product);
+    }
 
 
 

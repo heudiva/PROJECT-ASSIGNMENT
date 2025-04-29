@@ -31,9 +31,12 @@
 <!-- Delete Modal -->
 @include('admin.product.delete')
 
-  <!-- Add Product Drawer -->
+  <!-- Add Category Drawer -->
   @include('admin.category.create')
 
+  <!-- Add supplier Modal -->
+  @include('admin.supplier.create')
+        
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </x-guest-layout>
