@@ -19,9 +19,11 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function getCategories()
+    {
+        $categories = Category::all(); // ទាញយកទិន្នន័យពីតារាង categories
+        return response()->json($categories); // ត្រឡប់ទិន្នន័យជា JSON
+    }
     public function create()
     {
         //
@@ -52,12 +54,12 @@ class CategoryController extends Controller
      */
     public function edit(Request $request)
     {
-        return Category::find($request->id);
+        return Category::where('category_id', $request->id)->first();
     }
 
     public function delete(Request $request)
     {
-        return Category::find($request->id);
+        return Category::where('category_id', $request->id)->first();
     }
 
     /**
@@ -88,6 +90,6 @@ class CategoryController extends Controller
     public function destroy(Request $request)
     {
         parse_str($request->input('data'), $formData);
-        return Category::where('id', $formData['id'])->delete();
+        return Category::where('category_id', $formData['id'])->delete();
     }
 }

@@ -309,73 +309,6 @@ function previewImage(input) {
     }
 }
 
-
-//កូដនេះដើរតែពេល update លោត success 2 ដង
-// Function submitForm ថ្មី
-// function submitForm() {
-//     const form = $('#productForm')[0];
-
-//     // ✅ make sure form exists before you do anything
-//     if (!form) {
-//         console.error('Form not found');
-//         return;
-//     }
-
-//     // ✅ STEP 1: build formData from form
-//     const formData = new FormData(form);
-
-//     // ✅ STEP 2: check if mode is update
-//     const mode = $('#productForm').data('mode');
-
-//     // ✅ STEP 3: if update, make sure product_id is included
-//     const productId = $('#product_id').val();
-//     if (mode === 'update' && productId) {
-//         formData.append('product_id', productId);
-//     }
-
-//     // ✅ STEP 4: debug
-//     console.log('Product ID:', productId);
-//     console.log('FormData contents:', [...formData.entries()]);
-
-//     // ✅ STEP 5: ajax
-//     $.ajax({
-//         url: $('#productForm').attr('action'),
-//         type: 'POST',
-//         data: formData,
-//         processData: false,
-//         contentType: false,
-//         beforeSend: function () {
-//             $('#submitBtn').prop('disabled', true);
-//             $('#submitBtnText').text('កំពុងដំណើរការ...');
-//             $('#submitBtnSpinner').removeClass('hidden');
-//         },
-//         complete: function () {
-//             $('#submitBtn').prop('disabled', false);
-//             $('#submitBtnText').text(mode === 'create' ? 'Save' : 'Update');
-//             $('#submitBtnSpinner').addClass('hidden');
-//         },
-//         success: function (response) {
-//         toastr.success(response.message);
-
-//         // កំណត់ flag សម្រាប់បើក drawer ឡើងវិញ
-//         const mode = $('#productForm').data('mode');
-//         localStorage.setItem('reopenDrawer', 'true');
-//         localStorage.setItem('drawerMode', mode);
-
-//         // បើជា create mode សម្អាត form
-//         if (mode === 'create') {
-//             $('#productForm')[0].reset();
-//             $('#imagePreview').hide();
-//         }
-
-//         // Reload ទំព័រ
-//         location.reload();
-//     },
-
-//     });
-// }
-
-
 let isFormSubmitting = false; // អថេរតាមដានស្ថានភាពការដាក់សំណើ
 
 function submitForm() {
@@ -416,11 +349,6 @@ function submitForm() {
         processData: false,
         contentType: false,
         cache: false, // បិទការផ្ទុកជាមុន
-        // beforeSend: function() {
-        //     $submitBtn.prop('disabled', true);
-        //     $submitBtnText.text(mode === 'create' ? 'creating' : 'updating');
-        //     $submitBtnSpinner.removeClass('hidden');
-        // },
           success: function (response) {
          toastr.success(response.message);
 

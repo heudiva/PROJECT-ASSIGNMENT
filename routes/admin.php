@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\HomeController;
@@ -16,7 +16,6 @@ Route::group(['prefix' => 'admin/' , 'middleware' => ['auth','admin']], function
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
 
 route::get('admin/dashboard',[HomeController::class,'index'])
 ->middleware('auth','admin')
@@ -36,9 +35,9 @@ Route::controller(ProfileController::class)
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
 
-        
+
+
 Route::controller(UserController::class)
 ->prefix('dashboard/user')
 ->name('admin.user.')
@@ -51,12 +50,12 @@ Route::controller(UserController::class)
     Route::post('destroy', 'destroy')->name('destroy');
 
     Route::post('delete-users', 'delete_users')->name('deletes');
-  
+
 });
 
 Route::middleware('auth')->group(function () {
     route::get('/dashboard/setting',[SettingController::class,'index'])->name('admin.dashboard.setting');
-    
+
 });
 
 
@@ -82,6 +81,7 @@ Route::controller(CategoryController::class)
     Route::post('category/delete', 'delete')->name('category.delete'); // Added proper naming & structure
     Route::post('category/destroy', 'destroy')->name('category.destroy'); // Added proper naming & structure
 });
+
 Route::post('/category/get', [CategoryController::class, 'getCategory']);
 Route::get('/categories', [CategoryController::class, 'getCategories'])->name('categories.get');
 
@@ -106,7 +106,7 @@ Route::controller(MessageController::class)
 ->name('message.')
 ->group(function () {
     Route::get('message', 'index')->name('index');
-  
+
 });
 
 Route::controller(SupplierController::class)
